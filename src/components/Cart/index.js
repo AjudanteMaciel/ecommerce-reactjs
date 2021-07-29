@@ -9,7 +9,17 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         background: theme.palette.primary.main,
         width: '35%',
-
+        
+    },
+    CartGames: {
+        paddingInline: theme.spacing(6),
+        paddingTop: theme.spacing(2),
+        maxHeight:  400,
+        overflowY: 'auto',
+        
+    },
+    cardElements: {
+        
     }
 }));
 
@@ -22,7 +32,7 @@ function Cart(props) {
     return (
 
         <div className={classes.Cart}>
-            <div>
+            <div className={classes.CartGames}>
                 {cartGames.length === 0 && <div>Cart is empty</div>}
                 {
                     cartGames.map(game => (
@@ -30,6 +40,7 @@ function Cart(props) {
                     ))
                 }
             </div>
+            
         </div>
 
     );
