@@ -12,9 +12,12 @@ const useStyles = makeStyles((theme) => ({
     BuyCard: {
         display: 'flex',
         backgroundColor: 'transparent',
+        
     },
     Card: {
         display: 'flex',
+        justifyContent: 'space-between',
+        marginBottom: theme.spacing()
     },
     CardActionArea: {
         display: 'flex',
@@ -26,33 +29,38 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-evenly',
         paddingRight: theme.spacing(3),
     },
+    CardContent: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
+    }
 }));
 
 function BuyCard(props) {
-    const { game } = props
+    const { game, addToCart, removeFromCart } = props;
     const classes = useStyles();
 
     return (
         <Card className={classes.Card}>
 
-            <CardActionArea className={classes.CardActionArea}>
+            <div className={classes.CardActionArea}>
                 <img src={`images/games/${game.image}`} alt='img' />
 
-                <CardContent>
+                <CardContent className={classes.CardContent}>
                         <Typography variant="body1">
                             {game.name}
                         </Typography>
                         <Typography className={classes.price} variant="body1">
-                            {game.qty} x {`R$ ${game.price.toFixed(2)}`}
+                            {game.qty} x {`R$${game.price.toFixed(2)}`}
                         </Typography>
                 </CardContent>
-            </CardActionArea>
+            </div>
 
             <div className={classes.CardActions}>
-                <Button size="small" color="secondary" variant="outlined">
+                <Button size="small" color="secondary" variant="outlined" onClick={()=>addToCart(game)}>
                 +
                 </Button>
-                <Button size="small" color="secondary" variant="outlined">
+                <Button size="small" color="secondary" variant="outlined" onClick={()=>removeFromCart(game)}>
                 -
                 </Button>
             </div>

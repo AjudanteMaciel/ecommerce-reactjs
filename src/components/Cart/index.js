@@ -18,14 +18,11 @@ const useStyles = makeStyles((theme) => ({
         overflowY: 'auto',
         
     },
-    cardElements: {
-        
-    }
 }));
 
 function Cart(props) {
 
-    const { cartGames } = props;
+    const { cartGames, addToCart, removeFromCart } = props;
 
     const classes = useStyles();
 
@@ -36,11 +33,11 @@ function Cart(props) {
                 {cartGames.length === 0 && <div>Cart is empty</div>}
                 {
                     cartGames.map(game => (
-                        <BuyCard key={game.id} game={game}/>
+                        <BuyCard key={game.id} game={game} addToCart={addToCart} removeFromCart={removeFromCart}/>
                     ))
                 }
             </div>
-            
+
         </div>
 
     );

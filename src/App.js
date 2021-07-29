@@ -18,22 +18,32 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
 
-  const [cartGames, setCardGames] = useState([]);
+  const [cartGames, setCartGames] = useState([]);
 
   const addToCart = (game) => {
     const exists = cartGames.find( x => x.id === game.id);
-    console.log('entrou')
 
     if(exists) {
-      setCardGames(cartGames.map((x) =>
-        x.id === game.id ? {...exists, qtd: exists.qty + 1} : x 
+      setCartGames(cartGames.map((x) =>
+        x.id === game.id ? {...exists, qty: exists.qty + 1} : x 
         )
       );
     } else {
-      setCardGames([...cartGames, {...game, qty: 1}]);
-      console.log(cartGames)
+      setCartGames([...cartGames, {...game, qty: 1}]);
     }
 
+  }
+
+  const removeFromCart = (game) => {
+    const exists = cartGames.find((x) => x.id === game.id);
+    if(exists.qty === 1) {
+      setCartGames(cartGames.filter((x) => x.id !== game.id));
+    } else {
+      setCartGames(cartGames.map((x) =>
+        x.id === game.id ? {...exists, qty: exists.qty - 1} : x 
+        )
+      );
+    }
   }
 
   return (
@@ -41,7 +51,7 @@ function App() {
 
       <div className={classes.App}>
         <Products addToCart={addToCart}/>
-        <Cart cartGames={cartGames}/>
+        <Cart cartGames={cartGames} addToCart={addToCart} removeFromCart={removeFromCart}/>
       </div>
 
     </ThemeProvider>
