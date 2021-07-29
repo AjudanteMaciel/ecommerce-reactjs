@@ -7,11 +7,12 @@ const theme = createTheme({
         },
         secondary: {
             main: '#000000',
-
         }
+        
     },
     typography: {
-        fontFamily: "Courier New"
+        fontFamily: "Courier New",
+
     }
 });
 

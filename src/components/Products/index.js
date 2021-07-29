@@ -8,9 +8,10 @@ const games = require('../../products.json');
 
 const useStyles = makeStyles((theme) => ({
     Products: {
+        display: 'flex',
         background: theme.palette.secondary.main,
-        height: '100%',
-        width: '65%'
+        width: '65%',
+        flexDirection: 'column',
     },
     games: {
         display: 'flex',
@@ -33,7 +34,14 @@ function Products() {
                     ))
 
                 }
+                {
+                    games.map(game => (
+                        <GameCard key={games.id} game={game} />
+                    ))
+
+                }
             </div>
+
 
         </div>
 

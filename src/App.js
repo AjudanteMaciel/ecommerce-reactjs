@@ -9,9 +9,7 @@ import theme from './theme';
 
 const useStyles = makeStyles((theme) => ({
   App: {
-    display: 'flex',
-    width: 'auto',
-    height: 'auto',
+    height: '100vh'
   }
 }));
 

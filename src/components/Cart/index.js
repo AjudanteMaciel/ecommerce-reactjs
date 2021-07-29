@@ -6,7 +6,6 @@ const useStyles = makeStyles((theme) => ({
     Cart: {
         display: 'flex',
         background: theme.palette.primary.main,
-        height: '100%',
         width: '35%'
     }
 }));
