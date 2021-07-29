@@ -1,43 +1,25 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
-    GameCard: {
+    BuyCard: {
         display: 'flex',
         backgroundColor: 'transparent',
         alignItems: 'flex-start',
-        paddingInline: theme.spacing(5),
-        paddingBottom: theme.spacing(2),
-
-        color: 'white',
-        maxWidth: 180,
     },
-    CardContent: {
-        display: 'flex',
-        padding: theme.spacing(1)
-    },
-    score: {
-        marginLeft: theme.spacing(2)
-    },
-    price: {
-        minWidth: theme.spacing(12),
-        marginTop: theme.spacing(1),
-    }
 }));
 
-function GameCard(props) {
-
-    const { game, addToCart } = props
-
+function BuyCard({ game }) {
     const classes = useStyles();
 
     return (
         <Card className={classes.GameCard}>
-            <CardActionArea onClick={() => addToCart(game)}>
+            <CardActionArea>
                 <img src={`images/games/${game.image}`} alt='img' />
 
                 <CardContent className={classes.CardContent}>
@@ -59,4 +41,4 @@ function GameCard(props) {
     );
 }
 
-export default GameCard;
+export default BuyCard;

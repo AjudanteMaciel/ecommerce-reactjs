@@ -20,31 +20,30 @@ const useStyles = makeStyles((theme) => ({
     }
 }));   
 
-function Products() {
+function Products(props) {
+
+    const { addToCart } = props
+
     const classes = useStyles();
 
     const [games, setGames] = useState(data);
+    
 
     const sorted = function(type) {
-        console.log('chamou')
         switch(type){
             case 'a-z':
-                console.log('a-z')
                 setGames([...games.sort((a, b) => a.name > b.name? 1: -1)])
                 break;
             case 'price':
-                console.log('price')
                 setGames([...games.sort((a, b) => a.price - b.price)])
                 break;
             case 'score':
-                console.log('score')
                 setGames([...games.sort((a, b) =>  b.score - a.score)])
                 break;
             default:
                 setGames([...games.sort((a, b) => a.name - b.name)])
                 break;
         }
-
     }
     
     return (
@@ -54,7 +53,7 @@ function Products() {
             <div className={classes.games}>
                 {
                     games.map(game => (
-                        <GameCard key={games.id} game={game} />
+                        <GameCard key={games.id} game={game} addToCart={addToCart}/>
                     ))
                 }
             </div>

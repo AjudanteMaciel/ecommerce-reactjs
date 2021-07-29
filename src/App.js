@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -18,12 +18,30 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
 
+  const [cartGames, setCardGames] = useState([]);
+
+  const addToCart = (game) => {
+    const exists = cartGames.find( x => x.id === game.id);
+    console.log('entrou')
+
+    if(exists) {
+      setCardGames(cartGames.map((x) =>
+        x.id === game.id ? {...exists, qtd: exists.qty + 1} : x 
+        )
+      );
+    } else {
+      setCardGames([...cartGames, {...game, qty: 1}]);
+      console.log(cartGames)
+    }
+
+  }
+
   return (
     <ThemeProvider theme={theme}>
 
       <div className={classes.App}>
-        <Products />
-        <Cart />
+        <Products addToCart={addToCart}/>
+        <Cart cartGames={cartGames}/>
       </div>
 
     </ThemeProvider>

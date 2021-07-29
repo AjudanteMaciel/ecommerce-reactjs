@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
 
         color: 'white',
-        marginBottom: theme.spacing(2),
+        marginBottom: theme.spacing(6),
 
         flexDirection: 'column',
         alignItems: 'center'
