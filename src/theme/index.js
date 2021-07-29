@@ -13,6 +13,9 @@ const theme = createTheme({
     typography: {
         fontFamily: "Courier New",
 
+    },
+    shape: {
+        borderRadius: 0,
     }
 });
 

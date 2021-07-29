@@ -6,7 +6,8 @@ const useStyles = makeStyles((theme) => ({
     Cart: {
         display: 'flex',
         background: theme.palette.primary.main,
-        width: '35%'
+        width: '35%',
+
     }
 }));
 
