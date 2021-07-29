@@ -1,10 +1,32 @@
-import './App.css';
+import React from 'react';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+
+import Cart from './components/Cart';
+import Products from './components/Products';
+
+import theme from './theme';
+
+const useStyles = makeStyles((theme) => ({
+  App: {
+    display: 'flex',
+    width: 'auto',
+    height: 'auto',
+  }
+}));
 
 function App() {
-  return (
-    <div className="App">
+  const classes = useStyles();
 
-    </div>
+  return (
+    <ThemeProvider theme={theme}>
+
+      <div className={classes.App}>
+        <Products />
+        <Cart />
+      </div>
+
+    </ThemeProvider>
   );
 }
 
